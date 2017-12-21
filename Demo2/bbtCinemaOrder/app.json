@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/settlement/settlement",
+    "pages/paysuccess/paysuccess",
+    "pages/orderdetail/orderdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#37383b",
+    "navigationBarTitleText": "点餐",
+    "navigationBarTextStyle": "white"
+  }
+}

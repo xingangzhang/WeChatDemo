@@ -1,0 +1,38 @@
+.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+.flex-wrp{
+  margin-top: 0rpx;
+  display:flex;
+}
+.flex-item{
+  width: 375rpx;
+  height: 44px;
+  font-size: 26rpx;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 300rpx;
+  height: 200rpx;
+}
+.page-body{
+  -webkit-overflow-scrolling: false;
+  scroll-behavior: false;
+
+}
+.line{
+  width:1px;
+  background-color: #dcdcdc;
+  /*background: #dcdcdc;*/
+}
+.lineBottom{
+
+  width: 750rpx;
+  background-color: #dcdcdc;
+  height: 1px;
+}

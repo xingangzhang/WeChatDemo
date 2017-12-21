@@ -1,0 +1,21 @@
+<!--logs.wxml-->
+<!--<view class="container log-list">
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+</view>-->
+<view class="page-body">
+ 
+
+        <view class="flex-wrp" style="flex-direction:row;">
+
+          <view class="flex-item demo-text-1" bindtap="eatMeat"></view>
+          <view class="line"> </view>
+          <view class="flex-item demo-text-2" bindtap="order"></view>
+    
+        </view>
+
+   <view class="eatBack">
+<view class="lineBottom"></view>
+    </view>
+  </view>

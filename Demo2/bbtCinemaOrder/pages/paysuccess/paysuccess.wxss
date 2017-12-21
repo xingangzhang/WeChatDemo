@@ -1,0 +1,60 @@
+/* pages/paysuccess/paysuccess.wxss */
+.container {
+ height: 100%;
+}
+.pay_success{
+  display: flex;
+ justify-content: center;
+}
+.pay_success .pay_success{
+  margin-top: 100rpx;
+  width: 300rpx;
+  height: 300rpx; 
+}
+.pay_text{
+   display: flex;
+   justify-content: center;
+ 
+}
+.pay_text .pay_text{
+  padding-top: 60rpx;
+  color: #000000;
+  font-weight: bold;
+}
+.pay_no{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.pay_no .pay_number{
+  padding-top: 40rpx;
+  color: #000000;
+  font-weight: bold;
+}
+.pay_no .number{
+  padding-top: 40rpx;
+  color: #fc3e39;
+
+}
+.pay_no .pay_num{
+  padding-top: 40rpx;
+  color: #000000;
+  font-weight: bold;
+}
+.button .btn_ok{
+  margin-top: 59rpx;
+  width: 690rpx;
+  height: 88rpx;
+  background: #09bb07;
+  color: #ffffff;
+  font-size: 36rpx;
+}
+.button .btn_order{
+  margin-top: 28rpx;
+  width: 690rpx;
+  height: 88rpx;
+  background: #fbfafc;
+  color: #000000;
+  font-size: 36rpx;
+}

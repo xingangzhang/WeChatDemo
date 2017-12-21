@@ -1,0 +1,20 @@
+<view class="container">
+  <!--支付成功图标-->
+  <view class="pay_success">
+    <image class="pay_success" src="/src/images/icon_pays.png" />
+  </view>
+
+  <view class="pay_text">
+    <view class="pay_text">支付成功</view>
+  </view>
+  <view class="pay_no">
+    <view class="pay_number">您的取餐码为</view>
+    <view class="number">028{{number}}</view>
+    <view class="pay_num">号</view>
+  </view>
+  <!--两个Button-->
+  <view class="button">
+    <button class="btn_ok" bindtap="btn_ok">确定</button>
+    <button class="btn_order" bindtap="btn_order">我的订单</button>
+  </view>
+</view>

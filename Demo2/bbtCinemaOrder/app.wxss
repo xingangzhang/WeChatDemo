@@ -1,0 +1,41 @@
+/**app.wxss**/
+/*.container {*/
+  /*height: 100%;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*justify-content: space-between;*/
+  /*一个的时候是所有的边距  两个是上下和左右 四个 上左下右*/
+   /*box-sizing: border-box;*/
+/*} */
+/*.demo-text-1{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  color: #000000;
+  font-size: 34rpx;
+}
+.demo-text-1:before{
+  content: '点餐';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-2{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  color: #000000;
+  font-size: 34rpx;
+}
+.demo-text-2:before{
+  content: '订单';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}*/
+

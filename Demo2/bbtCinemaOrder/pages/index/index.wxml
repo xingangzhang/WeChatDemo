@@ -1,0 +1,176 @@
+<!--<import src="/src/head.wxml" />
+<import src="/src/foot.wxml" />-->
+<!--index.wxml-->
+
+<view class="order-container">
+
+
+  <view class="header-segment">
+    <view bindtap="header_click" data-idx="0" class="segment-item left-border">
+
+      <text>点餐</text>
+    </view>
+    <view bindtap="header_click" data-idx="1" class="segment-item right-border">
+
+      <text>订单</text>
+    </view>
+
+  </view>
+
+  <view style="height:88rpx;"></view>
+
+  <view wx:if="{{bool}}" class="food-header" style="margin-left:200rpx;display:flex;flex-direction:row;align-items:center;width:550rpx;height:60rpx;position:fixed;top:91rpx;z-index:1000;background-color:#f8f8f8;font-size:14px">
+    <text style="color:#888888;margin-left:20rpx">{{title}}</text>
+  </view>
+  <view wx:if="{{bool}}" class="order-content">
+
+    <scroll-view class="left-order" scroll-y="false">
+
+      <block wx:for="{{orderFoods}}">
+        <!-- 左边按钮的点击特效 -->
+        <view data-item="{{item.foodtype}}" data-index="{{index}}" bindtap="type_item_tap" wx:if="{{leftIndex!=index}}" class="order-list-type-item" style="background-color:#f8f8f8">
+
+          <text>{{item.foodtype}}</text>
+
+        </view>
+
+        <view data-item="{{item.foodtype}}" data-index="{{index}}" bindtap="type_item_tap" wx:else class="order-list-type-item" style="background-color:#fff">
+
+          <text>{{item.foodtype}}</text>
+
+        </view>
+
+
+
+      </block>
+
+    </scroll-view>
+    <scroll-view class="right-order" scroll-y="true" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
+
+
+      <block wx:for="{{foodArrItem}}">
+
+        <view class="food-item">
+
+          <image src="{{item.cover}}" style="width:110rpx;height:110rpx;margin:20rpx 20rpx 20rpx 20rpx" mode="aspectFill"></image>
+          <view class="item-content" style="margin-top:10rpx；display:flex">
+
+            <text style="margin-top:20rpx;font-size:14px">{{item.name}}</text>
+            <view class="item-bottom">
+              <text style="color:#fc3e39;font-size:15px">{{item.price}}</text>
+
+              <view class="item-price-about">
+                <image data-idx="{{index}}" bindtap="food_add" mode="aspectFit" class="add-icon" src="/src/images/add_icon.png"></image>
+                <text style="font-size:14px">{{item.count?item.count:'0'}}</text>
+                <image data-idx="{{index}}" bindtap="food_minus" mode="aspectFit" class="add-icon" src="/src/images/subtract_icon.png"></image>
+
+              </view>
+            </view>
+          </view>
+
+
+
+        </view>
+
+
+      </block>
+
+    </scroll-view>
+
+
+  </view>
+
+  <!--//订单页面-->
+  <!--hidden="{{bool}}"-->
+  <view  wx:else  class="order-history-list">
+    <scroll-view class="goods-scroll" scroll-y="true">
+      <block wx:for="{{orderlist}}">
+
+        <view data-item="{{item}}" data-index="{{index}}" class="goods-list-item" style="background-color:#fff;height:120rpx;width:750rpx;flex-direction:row;align-items:center;display:flex;" bindtap="order_detail">
+
+          <view class="left-list-order" style="diplay:flex;flex-direction:column;width:500rpx">
+
+            <text style="font-size:15px;display:flex;margin-left:30rpx;height:30rpx">取餐码:{{item.foodnum}}</text>
+
+
+            <text style="font-size:13px;display:flex;margin-left:30rpx;color:#9b9b9b;height:30rpx;margin-top:15rpx">{{item.ordertime}}</text>
+
+          </view>
+
+
+
+          <text wx:if="{{item.status==0}}" style="width:350rpx;font-size:15px;color:#fc3e39;justify-content:flex-end;display:flex;margin-right:30rpx">等待支付</text>
+          <text wx:elif="{{item.status==1}}" style="width:350rpx;font-size:15px;color:blue;justify-content:flex-end;display:flex;margin-right:30rpx">等待取餐</text>
+          <text wx:else style="width:350rpx;font-size:15px;color:#bfbfbf;justify-content:flex-end;display:flex;margin-right:30rpx">订单完成</text>
+
+
+        </view>
+
+        <!--分割线-->
+        <view class="line-bottom">
+          <view class="left-line-bottom" style="width:30rpx;background-color:white"></view>
+        </view>
+
+      </block>
+    </scroll-view>
+
+  </view>
+
+
+  <!--//底部状态栏-->
+  <view wx:if="{{bool}}" class="foodcar-bar">
+    <view bindtap="showModal" data-index="{{foodcarArr}}" class="foodcar">
+
+      <image wx:if="{{totalCount>0}}" style="height:55rpx;width:55rpx;display:flex;margin-left:30rpx" src="/src/images/foodcar.png">
+
+      </image>
+
+      <image wx:else style="height:55rpx;width:55rpx;display:flex;margin-left:30rpx" src="/src/images/unfoodcar.png"></image>
+
+
+      <text style="color:#fc3e39;font-size:17px;margin-left:30rpx">￥{{totalPrice}}</text>
+      <text style="color:#808080;font-size:14px;margin-left:10rpx">(共{{totalCount}})件</text>
+    </view>
+
+
+
+    <view bindtap="finished_click" data-index="{{foodcarArr}}" class="finish-view" style="background-color:red;width:200rpx;height:88rpx;display:flex;justify-content:space-around;flex-direction:row;align-items:center;z-index:1000;">
+
+      <text style="color:white">选好了 ></text>
+
+    </view>
+
+  </view>
+
+
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}">
+
+  </view>
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}" style="height:{{(foodcarHeight>440)?440+'rpx':foodcarHeight+'rpx'}}">
+
+
+    <scroll-view class="model-view" scroll-y="true" style="height:{{(foodcarHeight>440)?440+'rpx':foodcarHeight+'rpx'}}">
+      <view wx:if="{{item&&item.count>0}}" wx:for="{{foodcarArr}}" style="width:100vh;height:88rpx" class="food-car-item">
+        <text style="font-size:14px;width:350rpx"> {{item.name}}</text>
+        <text style="font-size:14px;width:150rpx;color:#fc3e39">{{item.totalprice}}</text>
+
+
+        <view class="item-price-about" style="width:250rpx">
+          <image data-idx="{{index}}" bindtap="food_car_add" mode="aspectFit" class="add-icon" src="/src/images/add_icon.png"></image>
+          <text style="font-size:14px">{{item.count?item.count:'0'}}</text>
+          <image data-idx="{{index}}" bindtap="food_car_minus" mode="aspectFit" class="add-icon" src="/src/images/subtract_icon.png"></image>
+
+        </view>
+
+
+        <!--<text>{{item.count}}</text>-->
+      </view>
+
+
+
+    </scroll-view>
+
+  </view>
+
+
+</view>
